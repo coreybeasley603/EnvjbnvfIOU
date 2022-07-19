@@ -8,7 +8,6 @@ import (
 	"fmt"
 	"strings"
 
-	"loov.dev/lensm/internal/go/buildcfg"
 )
 
 const (
@@ -19,7 +18,6 @@ const (
 
 // HeaderString returns the toolchain configuration string written in
 // Go object headers. This string ensures we don't attempt to import
-// or link object files that are incompatible with each other. This
 // string always starts with "go object ".
 func HeaderString() string {
 	return fmt.Sprintf("go object %s %s %s X:%s\n", buildcfg.GOOS, buildcfg.GOARCH, buildcfg.Version, strings.Join(buildcfg.Experiment.Enabled(), ","))
